@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+    function login() {
+      function isLoggedIn() {
+        return fetch("https://qmi-qs-b760/jwt/qrs/about?xrfkey=0000000000000000", {
+          method: 'GET',
+          mode: 'cors',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Qlik-xrfkey': '0000000000000000',
+            'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6Ikp....49qufveOa6jVbnvx3Q8IjS-Jg',
+          },
+        }).then(response => {
+          return response.status === 200;
+        });
+      }
+      return isLoggedIn().then(loggedIn => {
+        if (!loggedIn) {
+          alert('You are not logged in');      
+        }else{
+            document.getElementById('QV01').src="https://qmi-qs-b760/jwt/hub/";
+        }
+      });
+    }
+	login()
+  </script>
+</head>
+<body style="height:600px;">
+	<iframe id="QV01" src="" style="border:none;width:100%;height:100%;"></iframe>
+</body>
+</html>
