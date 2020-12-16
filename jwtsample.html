@@ -8,14 +8,13 @@
   <script type="text/javascript">
     function login() {
       function isLoggedIn() {
-        return fetch("https://qmi-qs-b760/jwt/hub/?xrfkey=0000000000000000", {
+        return fetch("https://qmi-qs-b760/jwt/hub/", {
           method: 'GET',
           mode: 'cors',
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
-            'X-Qlik-xrfkey': '0000000000000000',
-            'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6Ikp....49qufveOa6jVbnvx3Q8IjS-Jg',
+            'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6Ikp....49qufveOa6jVbnvx3Q8IjS-Jg'
           },
         }).then(response => {
           return response.status === 200;
